@@ -21,7 +21,6 @@ body {
   position: relative;
 }
 
-/* Светящийся шар на фоне */
 .glow-orb {
   position: fixed;
   top: -10%;
@@ -62,8 +61,13 @@ body {
   text-transform: uppercase;
 }
 
-.logo-section span { color: var(--accent); }
-.accent-icon { color: var(--accent); }
+.logo-section span { 
+  color: var(--accent); 
+}
+
+.accent-icon { 
+  color: var(--accent); 
+}
 
 .input-box {
   display: flex;
@@ -99,7 +103,9 @@ body {
   transition: 0.3s;
 }
 
-.input-box button:hover { transform: scale(1.05); filter: brightness(1.1); }
+.input-box button:hover { 
+  transform: scale(1.05); filter: brightness(1.1); 
+}
 
 .tabs {
   display: flex;
@@ -155,8 +161,12 @@ body {
   cursor: pointer;
 }
 
-.check-empty { color: var(--text-dim); }
-.check-done { color: var(--accent); }
+.check-empty { 
+  color: var(--text-dim); 
+}
+.check-done { 
+  color: var(--accent); 
+}
 
 .is-done span {
   text-decoration: line-through;
@@ -172,4 +182,100 @@ body {
   padding: 5px;
 }
 
-.delete-icon:hover { color: #ff4d4d; }
+.delete-icon:hover { 
+  color: #ff4d4d;
+}
+
+.app-wrapper::before {
+  content: " ";
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+              linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+.app-wrapper::after {
+  content: " ";
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.27861; }
+  100% { opacity: 0.04828; }
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.engine-status {
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.status-label {
+  display: block;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+
+.status-value {
+  font-size: 1.2rem;
+  color: var(--accent);
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0, 255, 163, 0.4);
+}
+
+.progress-container {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--accent);
+  box-shadow: 0 0 15px var(--accent);
+}
+
+small {
+  font-size: 0.6rem;
+  vertical-align: top;
+  opacity: 0.5;
+}
+
+.pulse {
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.scanlines {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+              linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background-size: 100% 3px, 3px 100%;
+  pointer-events: none;
+  z-index: 10;
+}
